@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
+
+    val listOfTasks = mutableListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,5 +18,8 @@ class MainActivity : AppCompatActivity() {
 //            // Code in here is going to be executed when the user clicks on a button
 //            Log.i("Caren", "User clicked on button")
 //        }
+
+        listOfTasks.add("Do laundry")
+        listOfTasks.add("Go for a walk")
     }
 }

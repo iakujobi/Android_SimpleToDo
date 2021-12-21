@@ -1,7 +1,10 @@
 package com.example.simpletodo
 
+import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -11,22 +14,34 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TaskItemAdapter(val listOfItems: List<String>)  : RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
 
+    // Usually involves inflating a layout from XML and returning the holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        // Inflate the custom layout
+        val contactView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false)
+        // Return a new holder instance
+        return ViewHolder(contactView)
     }
 
+    // Involves populating data into the item through holder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        // Get data model based on position
+        val item = listOfItems[position]
+
+        holder.textView.text = item
     }
 
     override fun getItemCount(): Int {
-        // Return the number of items this recycler view is supposed to lay out
+        // Return the number of items this recycler view is supposed to layout
         return listOfItems.size
     }
 
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // TODO
+        // Store references to elements in our layout view
+        val textView: TextView = itemView.findViewById(android.R.id.text1)
+
     }
 }

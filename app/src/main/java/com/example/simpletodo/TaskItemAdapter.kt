@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * A bridge that tells the recyclerView how to display the data we give it
  */
 
-class TaskItemAdapter : RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
+class TaskItemAdapter(val listOfItems: List<String>)  : RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         TODO("Not yet implemented")
@@ -20,7 +20,8 @@ class TaskItemAdapter : RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        // Return the number of items this recycler view is supposed to lay out
+        return listOfItems.size
     }
 
     // Provide a direct reference to each of the views within a data item

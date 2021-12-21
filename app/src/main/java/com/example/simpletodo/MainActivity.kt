@@ -11,15 +11,28 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
 
     val listOfTasks = mutableListOf<String>()
+    lateinit var adapter: TaskItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Variable to hold longClickedListener
+        val onLongClickListener = object : TaskItemAdapter.OnLongClickListener {
+            override fun onItemLongClicked(position: Int) {
+                // Now we specify what action we want when the user longClicks
+
+                // 1. Remove the item from the list
+                listOfTasks.removeAt(position)
+                // 2. Notify the adapter that our data set has changed
+                adapter.notifyDataSetChanged()
+            }
+        }
+
         // 1. Let's detect when the user clicks on the add button
 //        findViewById<Button>(R.id.button).setOnClickListener{
 //            // Code in here is going to be executed when the user clicks on a button
-//            Log.i("Caren", "User clicked on button")
+//            Log.i("Kay", "User clicked on button")
 //        }
 
         // Create a fake list
@@ -29,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         // Look up recyclerView in layout
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         // Create adapter passing in the sample user data
-        val adapter = TaskItemAdapter(listOfTasks)
+        adapter = TaskItemAdapter(listOfTasks, onLongClickListener)
         // Attach the adapter to the recyclerview to populate items
         recyclerView.adapter = adapter
         // Set layout manager to position the items

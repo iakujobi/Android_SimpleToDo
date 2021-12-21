@@ -1,5 +1,6 @@
 package com.example.simpletodo
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -12,7 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
  * A bridge that tells the recyclerView how to display the data we give it
  */
 
-class TaskItemAdapter(val listOfItems: List<String>)  : RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
+class TaskItemAdapter(val listOfItems: List<String>,
+                      val longClickListener: OnLongClickListener)  :
+    RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
+
+    // Identify the position of the long clicked action
+    interface OnLongClickListener {
+        fun onItemLongClicked(position: Int)
+    }
 
     // Usually involves inflating a layout from XML and returning the holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +49,20 @@ class TaskItemAdapter(val listOfItems: List<String>)  : RecyclerView.Adapter<Tas
     // Used to cache the views within the item layout for fast access
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Store references to elements in our layout view
-        val textView: TextView = itemView.findViewById(android.R.id.text1)
+        val textView: TextView
 
+        init {
+            textView = itemView.findViewById(android.R.id.text1)
+
+            // itemView represent each item in the app
+            // Check to see if we longClick on an item, the system will register the click
+            itemView.setOnLongClickListener{
+//                // Prints a message, shown on Logcat, when an item was longClicked
+//                Log.i("Kay", "Long clicked on item" + adapterPosition)
+
+                longClickListener.onItemLongClicked(adapterPosition)
+                true
+            }
+        }
     }
 }

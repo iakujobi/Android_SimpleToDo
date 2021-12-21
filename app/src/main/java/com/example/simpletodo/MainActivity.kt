@@ -2,15 +2,22 @@ package com.example.simpletodo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.FileUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.io.File
+import java.io.IOException
+import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
-    val listOfTasks = mutableListOf<String>()
+    // val - variable that will never change and cannot be reassigned
+    // var - changeable and can be reassigned
+
+    var listOfTasks = mutableListOf<String>()
     lateinit var adapter: TaskItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +33,9 @@ class MainActivity : AppCompatActivity() {
                 listOfTasks.removeAt(position)
                 // 2. Notify the adapter that our data set has changed
                 adapter.notifyDataSetChanged()
+
+                // Save the list when item has been deleted
+                saveItems()
             }
         }
 
@@ -35,9 +45,12 @@ class MainActivity : AppCompatActivity() {
 //            Log.i("Kay", "User clicked on button")
 //        }
 
-        // Create a fake list
-        listOfTasks.add("Do laundry")
-        listOfTasks.add("Go for a walk")
+//        // Create a fake list and hard coded it for testing
+//        listOfTasks.add("Do laundry")
+//        listOfTasks.add("Go for a walk")
+
+        // Populate the list of items
+        loadItems()
 
         // Look up recyclerView in layout
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -66,6 +79,35 @@ class MainActivity : AppCompatActivity() {
             // 3. Reset text field - without this part, the text field will not reset after adding text to list
             inputTextField.setText("")
 
+            // Save the items to the file
+            saveItems()
+        }
+    }
+
+    // Save the data that the user has inputted
+    // Save data by writing and reading from a file
+    // Create a method to get the file we need
+    fun getDataFile() : File {
+        //Every line is going to represent a specific task in our list of tasks
+        return File(filesDir, "data.txt")
+    }
+
+    // Load the items by reading every line in the data file
+    fun loadItems() {
+        try {
+            listOfTasks =
+                org.apache.commons.io.FileUtils.readLines(getDataFile(), Charset.defaultCharset())
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+        }
+     }
+
+    // Save items by writing them into our data file
+    fun saveItems() {
+        try {
+            org.apache.commons.io.FileUtils.writeLines(getDataFile(), listOfTasks)
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
         }
     }
 }

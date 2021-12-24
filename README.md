@@ -1,6 +1,6 @@
-# Project 1 - *Simple ToDo*
+# Android Pre-work - *Todo App*
 
-**Simple ToDo** is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
+**ToDo App** is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
 
 Submitted by: **Ikechukwu Akujobi**
 
@@ -32,7 +32,13 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Some issues I encountered during development:
+
+- Connecting my app to the emulator. I am using an M1 Macbook and the default ARM emulator kept generating error messages when I ran the app
+
+Resolve:
+
+- Create a new Virtual Device via AVD Manager and set up the Pixel 4 API 32 ARM. This virtual machine worked for me
 
 ## License
 

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SimpleToDo.iml" filepath="$PROJECT_DIR$/.idea/modules/SimpleToDo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SimpleToDo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SimpleToDo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/75902489/Android_SimpleToDo.SimpleToDo.iml" filepath="$PROJECT_DIR$/.idea/modules/75902489/Android_SimpleToDo.SimpleToDo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-617197269/Android_SimpleToDo.SimpleToDo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/-617197269/Android_SimpleToDo.SimpleToDo.app.iml" />
     </modules>
   </component>
 </project>

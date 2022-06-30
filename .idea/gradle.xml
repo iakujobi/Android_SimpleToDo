@@ -14,7 +14,6 @@
             <option value="$USER_HOME$/Library/CloudStorage/OneDrive-Personal/Documents/AndroidStudioProjects/Android_SimpleToDo/app" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

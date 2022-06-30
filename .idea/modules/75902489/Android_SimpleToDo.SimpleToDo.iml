@@ -7,7 +7,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$USER_HOME$/Library/CloudStorage/OneDrive-Personal/Documents/AndroidStudioProjects/Android_SimpleToDo">
       <excludeFolder url="file://$USER_HOME$/Library/CloudStorage/OneDrive-Personal/Documents/AndroidStudioProjects/Android_SimpleToDo/.gradle" />
